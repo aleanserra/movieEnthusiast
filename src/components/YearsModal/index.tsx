@@ -9,18 +9,28 @@ interface YearsModalProps {
 }
 
 export function YearsModal({ isOpen, onRequestClose }: YearsModalProps) {
-  const { validYears } = useContext(MoviesContext);
+  const { validYears, getMoviesByYear } = useContext(MoviesContext);
+
+  function onClickYear(year: number) {
+    console.log(year);
+    getMoviesByYear(year);
+  }
+
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       overlayClassName="react-modal-overlay"
-      className="react-modal-content"
+      className="react-modal-small-content"
     >
       <Container>
-        <h4>Selec a year</h4>
+        <h4>Select a year</h4>
         {validYears.length > 0 &&
-          validYears.map((validYears) => <p>{validYears}</p>)}
+          validYears.map((validYears, i) => (
+            <p onClick={() => onClickYear(validYears)} key={i}>
+              {validYears}
+            </p>
+          ))}
       </Container>
     </Modal>
   );

@@ -60,6 +60,16 @@ button{
 }
 .react-modal-content{
     width: 100%;
+    max-width: 576px;
+    padding: 2rem 4rem;
+    position: relative;
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 20px 40px #01243366;
+    opacity: 1;
+}
+.react-modal-small-content{
+    width: 100%;
     max-width: 178px;
     padding: 2rem 4rem;
     position: relative;

@@ -61,6 +61,7 @@ interface MoviesContextData {
   getValidYears: () => void;
   getTopTenRevenue: () => void;
   getMovie: (id: string) => void;
+  getMoviesByYear: (year: number) => void;
   movieDetail: MovieDetail;
   movies: Movie[];
   validYears: number[];
@@ -103,9 +104,23 @@ export function MoviesProvider({ children }: MoviesProviderProps) {
     api.get("movies").then((response) => {
       let years = response.data.content.map((movie: Movie) => movie.year);
       setValidYears(
-        years.filter((element: number, index: number) => {
-          return years.indexOf(element) === index;
-        })
+        years
+          .filter((element: number, index: number) => {
+            return years.indexOf(element) === index;
+          })
+          .sort()
+      );
+    });
+  }
+
+  function getMoviesByYear(year: number) {
+    api.get(`movies?start=${year}`).then((response) => {
+      setMovies(
+        _orderBy(
+          response.data.content.filter((movie: Movie) => movie.revenue != null),
+          ["revenue"],
+          ["desc"]
+        ).splice(0, 10)
       );
     });
   }
@@ -120,6 +135,7 @@ export function MoviesProvider({ children }: MoviesProviderProps) {
         getTopTenRevenue,
         validYears,
         getValidYears,
+        getMoviesByYear,
       }}
     >
       {children}
