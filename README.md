@@ -12,11 +12,11 @@ Make sure the Node is up to date
 
 ## Preview
 
-![](./screenshots/home.jpeg)
+![](./screenshots/home.jpg)
 
-![](./screenshots/select_year.jpeg)
+![](./screenshots/select_year.jpg)
 
-![](./screenshots/movie_detail.jpeg)
+![](./screenshots/movie_detail.jpg)
 
 # Tools
 
