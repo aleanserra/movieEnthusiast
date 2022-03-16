@@ -26,9 +26,9 @@ export function YearsModal({ isOpen, onRequestClose }: YearsModalProps) {
       <Container>
         <h4>Select a year</h4>
         {validYears.length > 0 &&
-          validYears.map((validYears, i) => (
-            <p onClick={() => onClickYear(validYears)} key={i}>
-              {validYears}
+          validYears.map((validYear, i) => (
+            <p onClick={() => onClickYear(validYear)} key={i}>
+              {validYear}
             </p>
           ))}
       </Container>

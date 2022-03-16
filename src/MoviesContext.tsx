@@ -57,6 +57,7 @@ interface MoviesProviderProps {
 }
 
 interface MoviesContextData {
+  getMoviesPageable: (page: number) => void;
   getMovies: () => void;
   getValidYears: () => void;
   getTopTenRevenue: () => void;
@@ -65,6 +66,7 @@ interface MoviesContextData {
   movieDetail: MovieDetail;
   movies: Movie[];
   validYears: number[];
+  isLoadingMovies: boolean;
 }
 
 export const MoviesContext = createContext<MoviesContextData>(
@@ -77,6 +79,15 @@ export function MoviesProvider({ children }: MoviesProviderProps) {
     {} as MovieDetail
   );
   const [validYears, setValidYears] = useState<number[]>([]);
+  const [isLoadingMovies, setIsLoadingMovies] = useState(false);
+
+  function getMoviesPageable(page: number) {
+    setIsLoadingMovies(true);
+    api.get(`movies?page=${page}&size=30`).then((response) => {
+      setIsLoadingMovies(false);
+      setMovies(response.data.content);
+    });
+  }
 
   function getMovies() {
     api.get("movies").then((response) => {
@@ -136,6 +147,8 @@ export function MoviesProvider({ children }: MoviesProviderProps) {
         validYears,
         getValidYears,
         getMoviesByYear,
+        getMoviesPageable,
+        isLoadingMovies,
       }}
     >
       {children}
