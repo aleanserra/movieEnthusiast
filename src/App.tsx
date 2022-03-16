@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MoviesProvider } from "./MoviesContext";
+import { MoviesProvider } from "./hooks/useMovies";
 import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header";
 import { GlobalStyle } from "./styles/global";

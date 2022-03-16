@@ -1,8 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "./styles";
 import detailImg from "../../assets/detail.svg";
-import { Movie, MoviesContext } from "../../MoviesContext";
+import { Movie } from "../../hooks/useMovies";
 import { UIInfiniteScroll } from "../InfiniteScroll/InfiniteScroll";
+import { useMovies } from "../../hooks/useMovies";
 
 interface MoviesTableProps {
   onOpenMovieDetail: () => void;
@@ -10,7 +11,7 @@ interface MoviesTableProps {
 
 export function MoviesTable({ onOpenMovieDetail }: MoviesTableProps) {
   const { getMovies, getMovie, movies, getMoviesPageable, isLoadingMovies } =
-    useContext(MoviesContext);
+    useMovies();
   const [page, setPage] = useState(1);
 
   useEffect(() => {

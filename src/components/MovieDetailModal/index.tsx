@@ -2,8 +2,7 @@ import Modal from "react-modal";
 import { Container } from "./styles";
 import close from "../../assets/close.svg";
 import line from "../../assets/line.svg";
-import { useContext } from "react";
-import { MoviesContext } from "../../MoviesContext";
+import { useMovies } from "../../hooks/useMovies";
 
 interface MovieDetailModalProps {
   isOpen: boolean;
@@ -14,7 +13,7 @@ export function MovieDetailModal({
   isOpen,
   onRequestClose,
 }: MovieDetailModalProps) {
-  const { movieDetail } = useContext(MoviesContext);
+  const { movieDetail } = useMovies();
 
   return (
     <Modal

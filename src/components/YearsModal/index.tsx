@@ -1,6 +1,5 @@
-import { useContext } from "react";
 import Modal from "react-modal";
-import { MoviesContext } from "../../MoviesContext";
+import { useMovies } from "../../hooks/useMovies";
 import { Container } from "./styles";
 
 interface YearsModalProps {
@@ -9,7 +8,7 @@ interface YearsModalProps {
 }
 
 export function YearsModal({ isOpen, onRequestClose }: YearsModalProps) {
-  const { validYears, getMoviesByYear } = useContext(MoviesContext);
+  const { validYears, getMoviesByYear } = useMovies();
 
   function onClickYear(year: number) {
     console.log(year);

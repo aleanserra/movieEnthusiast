@@ -1,5 +1,5 @@
-import { createContext, ReactNode, useState } from "react";
-import { api } from "./services/api";
+import { createContext, ReactNode, useContext, useState } from "react";
+import { api } from "../services/api";
 import { orderBy as _orderBy } from "lodash";
 
 export interface Movie {
@@ -69,9 +69,7 @@ interface MoviesContextData {
   isLoadingMovies: boolean;
 }
 
-export const MoviesContext = createContext<MoviesContextData>(
-  {} as MoviesContextData
-);
+const MoviesContext = createContext<MoviesContextData>({} as MoviesContextData);
 
 export function MoviesProvider({ children }: MoviesProviderProps) {
   const [movies, setMovies] = useState<Movie[]>({} as Movie[]);
@@ -154,4 +152,10 @@ export function MoviesProvider({ children }: MoviesProviderProps) {
       {children}
     </MoviesContext.Provider>
   );
+}
+
+export function useMovies() {
+  const context = useContext(MoviesContext);
+
+  return context;
 }

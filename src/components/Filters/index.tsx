@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { MoviesContext } from "../../MoviesContext";
+import { useMovies } from "../../hooks/useMovies";
 import { Container } from "./styles";
 
 interface FiltersProps {
@@ -7,7 +6,7 @@ interface FiltersProps {
 }
 
 export function Filters({ onOpenYearsModal }: FiltersProps) {
-  const { getTopTenRevenue, getValidYears } = useContext(MoviesContext);
+  const { getTopTenRevenue, getValidYears } = useMovies();
   function onClickTopTenRevenuePerYear() {
     getValidYears();
     onOpenYearsModal();
