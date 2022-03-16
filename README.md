@@ -7,8 +7,10 @@ This project was made for a movie enthusiast
 - Run development
 
 Make sure the Node is up to date
+
 -- yarn
--- yarn start
+
+-- yarn run start
 
 ## Preview
 
