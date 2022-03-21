@@ -72,7 +72,7 @@ interface MoviesContextData {
 const MoviesContext = createContext<MoviesContextData>({} as MoviesContextData);
 
 export function MoviesProvider({ children }: MoviesProviderProps) {
-  const [movies, setMovies] = useState<Movie[]>({} as Movie[]);
+  const [movies, setMovies] = useState<Movie[]>([] as Movie[]);
   const [movieDetail, setMovieDetail] = useState<MovieDetail>(
     {} as MovieDetail
   );
@@ -83,7 +83,7 @@ export function MoviesProvider({ children }: MoviesProviderProps) {
     setIsLoadingMovies(true);
     api.get(`movies?page=${page}&size=30`).then((response) => {
       setIsLoadingMovies(false);
-      setMovies(response.data.content);
+      setMovies((prevMovies) => [...prevMovies, ...response.data.content]);
     });
   }
 

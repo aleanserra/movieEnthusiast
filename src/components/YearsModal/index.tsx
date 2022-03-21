@@ -11,7 +11,6 @@ export function YearsModal({ isOpen, onRequestClose }: YearsModalProps) {
   const { validYears, getMoviesByYear } = useMovies();
 
   function onClickYear(year: number) {
-    console.log(year);
     getMoviesByYear(year);
   }
 
