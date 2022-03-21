@@ -81,16 +81,22 @@ export function MoviesProvider({ children }: MoviesProviderProps) {
 
   function getMoviesPageable(page: number) {
     setIsLoadingMovies(true);
-    api.get(`movies?page=${page}&size=30`).then((response) => {
-      setIsLoadingMovies(false);
-      setMovies((prevMovies) => [...prevMovies, ...response.data.content]);
-    });
+    api
+      .get(`movies?page=${page}&size=30`)
+      .then((response) => {
+        setIsLoadingMovies(false);
+        setMovies((prevMovies) => [...prevMovies, ...response.data.content]);
+      })
+      .catch((error) => console.log(error));
   }
 
   function getMovies() {
-    api.get("movies").then((response) => {
-      setMovies(response.data.content);
-    });
+    api
+      .get("movies")
+      .then((response) => {
+        setMovies(response.data.content);
+      })
+      .catch((error) => console.log(error));
   }
 
   function getMovie(id: string) {
@@ -98,40 +104,53 @@ export function MoviesProvider({ children }: MoviesProviderProps) {
   }
 
   function getTopTenRevenue() {
-    api.get("movies").then((response) => {
-      setMovies(
-        _orderBy(
-          response.data.content.filter((movie: Movie) => movie.revenue != null),
-          ["revenue"],
-          ["desc"]
-        ).splice(0, 10)
-      );
-    });
+    api
+      .get("movies")
+      .then((response) => {
+        setMovies(
+          _orderBy(
+            response.data.content.filter(
+              (movie: Movie) => movie.revenue != null
+            ),
+            ["revenue"],
+            ["desc"]
+          ).splice(0, 10)
+        );
+      })
+      .catch((error) => console.log(error));
   }
 
   function getValidYears() {
-    api.get("movies").then((response) => {
-      let years = response.data.content.map((movie: Movie) => movie.year);
-      setValidYears(
-        years
-          .filter((element: number, index: number) => {
-            return years.indexOf(element) === index;
-          })
-          .sort()
-      );
-    });
+    api
+      .get("movies")
+      .then((response) => {
+        let years = response.data.content.map((movie: Movie) => movie.year);
+        setValidYears(
+          years
+            .filter((element: number, index: number) => {
+              return years.indexOf(element) === index;
+            })
+            .sort()
+        );
+      })
+      .catch((error) => console.log(error));
   }
 
   function getMoviesByYear(year: number) {
-    api.get(`movies?start=${year}`).then((response) => {
-      setMovies(
-        _orderBy(
-          response.data.content.filter((movie: Movie) => movie.revenue != null),
-          ["revenue"],
-          ["desc"]
-        ).splice(0, 10)
-      );
-    });
+    api
+      .get(`movies?start=${year}`)
+      .then((response) => {
+        setMovies(
+          _orderBy(
+            response.data.content.filter(
+              (movie: Movie) => movie.revenue != null
+            ),
+            ["revenue"],
+            ["desc"]
+          ).splice(0, 10)
+        );
+      })
+      .catch((error) => console.log(error));
   }
 
   return (
