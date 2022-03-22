@@ -1,11 +1,8 @@
 import { Filters } from "../Filters";
 import { MoviesTable } from "../MoviesTable";
+import { DashboardProps } from "./Dashboard.interface";
 import { Container } from "./styles";
 
-interface DashboardProps {
-  onOpenMovieDetail: () => void;
-  onOpenYearsModal: () => void;
-}
 export function Dashboard({
   onOpenMovieDetail,
   onOpenYearsModal,

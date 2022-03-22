@@ -3,11 +3,7 @@ import { Container } from "./styles";
 import close from "../../assets/close.svg";
 import line from "../../assets/line.svg";
 import { useMovies } from "../../hooks/useMovies";
-
-interface MovieDetailModalProps {
-  isOpen: boolean;
-  onRequestClose: () => void;
-}
+import { MovieDetailModalProps } from "./MovieDetailModal.interface";
 
 export function MovieDetailModal({
   isOpen,

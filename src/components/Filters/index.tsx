@@ -1,9 +1,6 @@
 import { useMovies } from "../../hooks/useMovies";
+import { FiltersProps } from "./Filters.interface";
 import { Container } from "./styles";
-
-interface FiltersProps {
-  onOpenYearsModal: () => void;
-}
 
 export function Filters({ onOpenYearsModal }: FiltersProps) {
   const { getTopTenRevenue, getValidYears } = useMovies();

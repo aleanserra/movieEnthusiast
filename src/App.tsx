@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MoviesProvider, useMovies } from "./hooks/useMovies";
+import { MoviesProvider } from "./hooks/useMovies";
 import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header";
 import { GlobalStyle } from "./styles/global";
@@ -12,7 +12,6 @@ Modal.setAppElement("#root");
 export function App() {
   const [isMovieDetailModalOpen, setIsMovieDetailModalOpen] = useState(false);
   const [isYearsModalOpen, setIsYearsModalOpen] = useState(false);
-  const { isLoadedMoviesByYear } = useMovies();
 
   function handleOpenYearsModal() {
     setIsYearsModalOpen(true);
@@ -42,7 +41,7 @@ export function App() {
         onRequestClose={handleCloseMovieDetailModal}
       />
       <YearsModal
-        isOpen={isYearsModalOpen && !isLoadedMoviesByYear}
+        isOpen={isYearsModalOpen}
         onRequestClose={handleCloseYearsModal}
       />
 
