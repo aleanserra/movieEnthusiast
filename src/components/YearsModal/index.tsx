@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Modal from "react-modal";
 import { useMovies } from "../../hooks/useMovies";
 import { Container } from "./styles";
@@ -8,11 +9,16 @@ interface YearsModalProps {
 }
 
 export function YearsModal({ isOpen, onRequestClose }: YearsModalProps) {
-  const { validYears, getMoviesByYear } = useMovies();
+  const { validYears, getMoviesByYear, isLoadedMoviesByYear } = useMovies();
 
   function onClickYear(year: number) {
     getMoviesByYear(year);
   }
+  useEffect(() => {
+    if (isLoadedMoviesByYear) {
+      onRequestClose();
+    }
+  }, [isLoadedMoviesByYear]);
 
   return (
     <Modal
