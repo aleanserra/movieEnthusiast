@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Container } from "./styles";
 import detailImg from "../../assets/detail.svg";
-import { Movie } from "../../hooks/useMovies";
 import { useMovies } from "../../hooks/useMovies";
+import { Movie } from "../../interfaces/useMovies.interface";
 
 interface MoviesTableProps {
   onOpenMovieDetail: () => void;
