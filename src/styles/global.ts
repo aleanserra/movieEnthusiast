@@ -58,6 +58,7 @@ button{
     align-items:center;
     justify-content: center;
 }
+
 .react-modal-content{
     width: 100%;
     max-width: 576px;
@@ -67,7 +68,11 @@ button{
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 20px 40px #01243366;
     opacity: 1;
+    &:focus{
+        outline:none;
+    }
 }
+
 .react-modal-small-content{
     width: 100%;
     max-width: 178px;

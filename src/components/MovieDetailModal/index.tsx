@@ -32,10 +32,16 @@ export function MovieDetailModal({
         <p>{movieDetail.genre}</p>
         <h4>Description</h4>
         <p>{movieDetail.description}</p>
-        <h4>Director</h4>
-        <p className="cast">{movieDetail.director}</p>
-        <h4>Actors</h4>
-        <p className="cast">{movieDetail.actors}</p>
+        <div className="cast-container">
+          <div className="director">
+            <h4>Director</h4>
+            <p className="cast">{movieDetail.director}</p>
+          </div>
+          <div>
+            <h4>Actors</h4>
+            <p className="cast">{movieDetail.actors}</p>
+          </div>
+        </div>
         <h4>Runtime</h4>
         <p>{movieDetail.runtime}</p>
         <h4>Rating</h4>

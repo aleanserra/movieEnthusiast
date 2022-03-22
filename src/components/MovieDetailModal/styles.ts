@@ -55,4 +55,10 @@ export const Container = styled.div`
     color: #00baff;
     opacity: 1;
   }
+  .cast-container {
+    display: flex;
+    .director {
+      width: 12rem;
+    }
+  }
 `;
