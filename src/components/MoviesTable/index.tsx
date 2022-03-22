@@ -8,7 +8,7 @@ interface MoviesTableProps {
   onOpenMovieDetail: () => void;
 }
 
-const NUMBER_INITIAL_PAGE = 1;
+const NUMBER_INITIAL_PAGE = 0;
 
 export function MoviesTable({ onOpenMovieDetail }: MoviesTableProps) {
   const { getMovie, movies, getMoviesPageable } = useMovies();
