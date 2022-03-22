@@ -1,5 +1,11 @@
 import Modal from "react-modal";
-import { Container } from "./styles";
+import {
+  Cast,
+  CastContainer,
+  CloseButton,
+  Container,
+  Director,
+} from "./styles";
 import close from "../../assets/close.svg";
 import line from "../../assets/line.svg";
 import { useMovies } from "../../hooks/useMovies";
@@ -20,28 +26,27 @@ export function MovieDetailModal({
     >
       <Container>
         <h1>{movieDetail.title}</h1>
-        <div className="close-button" onClick={onRequestClose}>
+        <CloseButton onClick={onRequestClose}>
           <img src={close} alt="Close"></img>
           <p>Close</p>
-        </div>
+        </CloseButton>
         <img src={line} alt="Line"></img>
-
         <h4>Year</h4>
         <p>{movieDetail.year}</p>
         <h4>Genre</h4>
         <p>{movieDetail.genre}</p>
         <h4>Description</h4>
         <p>{movieDetail.description}</p>
-        <div className="cast-container">
-          <div className="director">
+        <CastContainer>
+          <Director>
             <h4>Director</h4>
-            <p className="cast">{movieDetail.director}</p>
-          </div>
+            <Cast>{movieDetail.director}</Cast>
+          </Director>
           <div>
             <h4>Actors</h4>
-            <p className="cast">{movieDetail.actors}</p>
+            <Cast>{movieDetail.actors}</Cast>
           </div>
-        </div>
+        </CastContainer>
         <h4>Runtime</h4>
         <p>{movieDetail.runtime}</p>
         <h4>Rating</h4>
